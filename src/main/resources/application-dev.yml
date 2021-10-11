@@ -6,12 +6,12 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://8.140.135.67:3306/fc_profession_edu?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
-      username: poly
-      password: dg3FHFYl6NPnz84U3YAN
-#      url: jdbc:mysql://127.0.0.1:3306/fc_profess_edu?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
-#      username: root
-#      password: root
+#      url: jdbc:mysql://8.140.135.67:3306/fc_profession_edu?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
+#      username: poly
+#      password: dg3FHFYl6NPnz84U3YAN
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
+      username: root
+      password: root
       driver-class-name: com.mysql.cj.jdbc.Driver
       initial-size: 5
       min-idle: 5

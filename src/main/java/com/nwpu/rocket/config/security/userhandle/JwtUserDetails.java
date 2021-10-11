@@ -1,7 +1,7 @@
 package com.nwpu.rocket.config.security.userhandle;
 
 
-import com.nwpu.education.edu_backend.entity.User;
+import com.nwpu.rocket.entity.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

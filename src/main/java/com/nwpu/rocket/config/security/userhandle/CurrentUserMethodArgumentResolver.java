@@ -2,7 +2,7 @@ package com.nwpu.rocket.config.security.userhandle;
 
 
 
-import com.nwpu.education.edu_backend.entity.User;
+import com.nwpu.rocket.entity.User;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;

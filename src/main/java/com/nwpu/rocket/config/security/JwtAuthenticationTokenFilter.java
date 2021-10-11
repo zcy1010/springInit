@@ -1,12 +1,9 @@
 package com.nwpu.rocket.config.security;
 
 
-//import com.edu.nwpu.util.JwtTokenUtil;
-//import com.edu.nwpu.util.security.userhandle.JwtUserDetails;
-//import com.edu.nwpu.util.security.userhandle.UserClaim;
-import com.nwpu.education.edu_backend.util.JwtTokenUtil;
-import com.nwpu.education.edu_backend.util.security.userhandle.JwtUserDetails;
-import com.nwpu.education.edu_backend.util.security.userhandle.UserClaim;
+import com.nwpu.rocket.config.security.userhandle.JwtUserDetails;
+import com.nwpu.rocket.config.security.userhandle.UserClaim;
+import com.nwpu.rocket.until.token.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

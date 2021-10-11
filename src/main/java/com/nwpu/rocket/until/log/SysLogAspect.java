@@ -5,11 +5,11 @@ package com.nwpu.rocket.until.log;
 //import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
-import com.nwpu.education.edu_backend.entity.SysLog;
-import com.nwpu.education.edu_backend.entity.User;
-import com.nwpu.education.edu_backend.service.SysLogService;
-import com.nwpu.education.edu_backend.service.UserInfoService;
-import com.nwpu.education.edu_backend.util.security.userhandle.JwtUserDetails;
+import com.nwpu.rocket.config.security.userhandle.JwtUserDetails;
+import com.nwpu.rocket.entity.SysLog;
+import com.nwpu.rocket.entity.User;
+import com.nwpu.rocket.service.SysLogService;
+import com.nwpu.rocket.service.UserInfoService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -42,7 +42,7 @@ public class SysLogAspect {
         this.userInfoService = userInfoService;
     }
 
-    @Pointcut("@annotation( com.nwpu.education.edu_backend.util.log.MyLog)")
+    @Pointcut("@annotation( com.nwpu.rocket.until.log.MyLog)")
     public void logPoinCut() {
     }
 
@@ -66,7 +66,7 @@ public class SysLogAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         SysLog sysLog=new SysLog();
-        com.nwpu.education.edu_backend.util.log.MyLog myLog=method.getAnnotation(com.nwpu.education.edu_backend.util.log.MyLog.class);
+        com.nwpu.rocket.until.log.MyLog myLog=method.getAnnotation(com.nwpu.rocket.until.log.MyLog.class);
         if(myLog!=null){
             sysLog.setOperation(myLog.value());
         }
@@ -85,7 +85,7 @@ public class SysLogAspect {
 //        }
         sysLog.setParams(params);
         // 获取request
-        HttpServletRequest request = com.nwpu.education.edu_backend.util.log.HttpContextUtils.getHttpServletRequest();
+        HttpServletRequest request = com.nwpu.rocket.until.log.HttpContextUtils.getHttpServletRequest();
         // 设置IP地址
         sysLog.setIp(IPUtils.getIpAddr(request));
         // 用户名
