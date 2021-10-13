@@ -9,7 +9,6 @@ import com.nwpu.rocket.exception.PasswordWrongException;
 import com.nwpu.rocket.exception.UserExistException;
 import com.nwpu.rocket.exception.UserNotFoundException;
 import com.nwpu.rocket.repository.UserRepository;
-import com.nwpu.rocket.service.AuthCacheService;
 import com.nwpu.rocket.service.UserInfoService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,11 +21,9 @@ import java.util.List;
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
     private final UserRepository userRepository;
-    private final AuthCacheService authCacheService;
 
-    public UserInfoServiceImpl(UserRepository userRepository, AuthCacheService authCacheService) {
+    public UserInfoServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.authCacheService = authCacheService;
     }
 
     @Override
@@ -55,7 +52,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     public User userStatusOnOffByUser(User user, Integer status) {
         user.setStatus(status);
         user=userRepository.saveAndFlush(user);
-        authCacheService.delUser(user.getAccount());
+
         return user;
     }
 
@@ -83,7 +80,6 @@ public class UserInfoServiceImpl implements UserInfoService {
         user.setPasswordClearText(newPassword);
         newPassword = encoder.encode(newPassword);
         user = userRepository.saveAndFlush(user.setPassword(newPassword));
-        authCacheService.setUser(user);
         return user;
     }
 
@@ -109,7 +105,6 @@ public class UserInfoServiceImpl implements UserInfoService {
         String finalPassword = encoder.encode(newPassword);
         user.setPassword(finalPassword);
         user.setPasswordClearText(newPassword);
-        authCacheService.setUser(user);
         return userRepository.saveAndFlush(user);
     }
 }

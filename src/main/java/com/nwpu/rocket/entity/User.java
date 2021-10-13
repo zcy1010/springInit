@@ -25,12 +25,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "user",schema = "public")
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @Inheritance(strategy = InheritanceType.JOINED)
 @DynamicInsert
 @DynamicUpdate
+
 public class User implements Serializable {
     /**
      * 序列版本号

@@ -80,7 +80,7 @@ public class AuthServiceImpl implements AuthService {
         //更改当前已认证的主体，或删除认证信息。
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        //根据用户名找到用户。从redis里面查找。其余内容（密码状态等）可能没更新？
+        //根据用户名找到用户。
         final UserDetails userDetails = userDetailsService.loadUserByUsername(account);
         //根据redis里面的user的信息生成token
         return jwtTokenUtil.generateToken((JwtUserDetails) userDetails);

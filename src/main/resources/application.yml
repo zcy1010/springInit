@@ -9,16 +9,8 @@ jwt:
   expiration: 604800 #JWT的超期限时间(60*60*24)
   tokenHead: Bearer  #JWT负载中拿到开头
 
-#logging:
-#  config: classpath:logback-dev.xml
 
-redis:
-  database: fcprofessional
-  key:
-    userauth: 'user:auth'
-#    emailcode: 'email:code:auth'
-  expire:
-    common: 21600 # 6小时
+
 
 minio:
   endpoint: http://8.140.135.67:9000
