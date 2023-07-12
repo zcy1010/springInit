@@ -28,6 +28,14 @@ public interface UserInfoService {
     User addAdmin(User newUser);
 
     /**
+     * 添加用户
+     *
+     * @param newUser 要添加的User
+     * @return newUser
+     */
+    User addUser(User newUser);
+
+    /**
      * 设置用户的状态
      *
      * @param user
@@ -68,5 +76,5 @@ public interface UserInfoService {
      * @param role 下级的身份
      * @return
      */
-    User resetPassword(String account, String newPassword,String role);
+    User resetPassword(String account, String newPassword);
 }

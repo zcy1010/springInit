@@ -29,7 +29,7 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       filters: stat,wall,slf4j
   jpa:
-    database: postgresql
+    database: mysql
     show-sql: true
     hibernate:
       ddl-auto: update

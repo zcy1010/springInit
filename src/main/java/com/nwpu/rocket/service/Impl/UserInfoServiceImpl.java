@@ -45,9 +45,25 @@ public class UserInfoServiceImpl implements UserInfoService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         final String rawPassword = newAdmin.getPassword();
         newAdmin.setPassword(encoder.encode(rawPassword));
+        newAdmin.setPasswordClearText(rawPassword);
+        newAdmin.setRoles(User.ROLE_ADMIN);
         return userRepository.saveAndFlush(newAdmin);
     }
 
+    @Override
+    public User addUser(User newUser) {
+        String userAccount = newUser.getAccount();
+        User user = userRepository.findByAccount(userAccount);
+        if (user != null) {
+            throw new UserExistException();
+        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        final String rawPassword = newUser.getPassword();
+        newUser.setPasswordClearText(rawPassword);
+        newUser.setPassword(encoder.encode(rawPassword));
+        newUser.setRoles(User.ROLE_NORMAL);
+        return userRepository.saveAndFlush(newUser);
+    }
     @Override
     public User userStatusOnOffByUser(User user, Integer status) {
         user.setStatus(status);
@@ -93,13 +109,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public User resetPassword(String account, String newPassword,String role) {
+    public User resetPassword(String account, String newPassword) {
         User user = findByAccount(account);
         if(user==null){
             throw new UserNotFoundException();
-        }
-        if(!user.getRoles().equals(role)){
-            throw new InsufficientPermissionException();
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String finalPassword = encoder.encode(newPassword);

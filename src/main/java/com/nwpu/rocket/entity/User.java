@@ -139,27 +139,16 @@ public class User implements Serializable {
     @Transient
     public static final int STATUS_OFF = 0;
 
-    /**
-     * 用户角色：学校
-     */
-    @Transient
-    public static final String ROLE_SCHOOL = "ROLE_SCHOOL";
 
     /**
      * 用户角色：申请者
      */
     @Transient
-    public static final String ROLE_APPLICANT = "ROLE_APPLICANT";
+    public static final String ROLE_NORMAL = "ROLE_NORMAL";
 
     /**
      * 用户角色：管理员
      */
     @Transient
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
-
-    /**
-     * 用户角色：专家
-     */
-    @Transient
-    public static final String ROLE_EXPERT = "ROLE_EXPERT";
 }
